@@ -8,6 +8,7 @@ const NavBar = ({ user, handleLogout }) => {
         <nav>
           Welcome, {user.name}
           <Link to="/">Posts</Link>
+          <Link to="/new">Add Post</Link>
           <Link to="" onClick={handleLogout}>LOG OUT</Link>
           <Link to="/changePassword">Change Password</Link>
           </nav>
