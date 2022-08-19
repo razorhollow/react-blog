@@ -19,7 +19,7 @@ const AddPost = (props) => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      //call to back goes here
+      props.handleAddPost(formData)
       navigate('/')
     } catch (err) {
       console.log(err)

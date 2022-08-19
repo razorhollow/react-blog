@@ -8,9 +8,11 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddPost from './pages/AddPost/AddPost'
+import * as postService from './services/postService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const[posts, setPosts] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -23,13 +25,19 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleAddPost = async postData => {
+    const newPost = await postService.create(postData)
+    setPosts([...posts, newPost])
+    navigate('/')
+  }
+
   return (
     <>
       <div className='App'>
         <NavBar user={user} handleLogout={handleLogout} />
         <main>
           <Routes>
-            <Route path="/new" element={<AddPost />} />
+            <Route path="/add" element={<AddPost handleAddPost={handleAddPost} />} />
             <Route
               path="/signup"
               element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}

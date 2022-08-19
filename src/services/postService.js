@@ -9,16 +9,4 @@ async function create(postData) {
   return await res.json()
 }
 
-async function addPhoto(photoData, profileId) {
-  const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: JSON.stringify(postData)
-  })
-  return await res.json()
-}
-
 export { create }
- 
