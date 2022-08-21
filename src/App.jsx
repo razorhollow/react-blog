@@ -9,6 +9,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddPost from './pages/AddPost/AddPost'
 import * as postService from './services/postService'
+import PostList from './pages/PostList/PostList'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -45,6 +46,7 @@ const App = () => {
         <NavBar user={user} handleLogout={handleLogout} />
         <main>
           <Routes>
+            <Route path="/" element={<PostList posts={posts} />} />
             <Route path="/add" element={<AddPost handleAddPost={handleAddPost} />} />
             <Route
               path="/signup"
