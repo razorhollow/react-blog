@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -30,6 +30,14 @@ const App = () => {
     setPosts([...posts, newPost])
     navigate('/')
   }
+
+  useEffect(()=> {
+    const fetchAllPosts = async () => {
+      const postData = await postService.getAll()
+      setPosts(postData)
+    }
+    fetchAllPosts()
+  })
 
   return (
     <>
