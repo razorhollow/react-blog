@@ -37,7 +37,7 @@ const App = () => {
       setPosts(postData)
     }
     fetchAllPosts()
-  })
+  }, [])
 
   return (
     <>
